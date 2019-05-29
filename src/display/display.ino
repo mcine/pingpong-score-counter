@@ -167,10 +167,10 @@ void playWinTone() {
 }
 
 /** Radio handler */
-void handleRadioMessage(char msgChars[]) 
+void handleRadioMessage(char msgChars[]) {
     msgChars[1] = '\0'; // failing atoi is undefined behaviour.. tryihg to avoid.. TODO: is strtol possible ?
     // COMMENT: using string commands would be a bit more robust solution. fex: "1" instead of 1
-    // If using integer, I would convert this to switch-case
+    // If using integer commands, I would convert this to switch-case
     int msgId = atoi(msgChars); 
     if (msgId == RADIO_MSG_BUTTON_1_PRESS) addPlayerScore(1);
     if (msgId == RADIO_MSG_BUTTON_1_LONG_PRESS_1_SIGNAL) signalLongPress1();

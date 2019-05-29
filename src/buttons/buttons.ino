@@ -66,7 +66,7 @@ void sendRadioMessage(int msgId) {
     if(msgId > 0xff) return; 
     
     char buff[2]; // one byte of data max.. and null termination
-    itoa(num, &buff, 10);
+    itoa(msgId, (char*)&buff, 10);
     radio.write(&buff, sizeof(buff));
 }
 
