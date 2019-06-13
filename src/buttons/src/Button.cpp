@@ -33,15 +33,16 @@ void Button::checkState() {
     // Read the current state of the button
     this->currentState = digitalRead(this->pin);
 
-    // Signals for long presses
-    if (this->currentState == PRESSED && this->isLongPressed_1() && !this->longPress_1_Noted) {
-        this->signalLongPress_1();
+    if (this->currentState == this->prevState) {
+        // Signals for long presses
+        if (this->currentState == PRESSED && this->isLongPressed_1() && !this->longPress_1_Noted) {
+            this->signalLongPress_1();
+        }
+        if (this->currentState == PRESSED && this->isLongPressed_2() && !this->longPress_2_Noted) {
+            this->signalLongPress_2();
+        }
+        return;
     }
-    if (this->currentState == PRESSED && this->isLongPressed_2() && !this->longPress_2_Noted) {
-        this->signalLongPress_2();
-    }
-
-    if (this->currentState == this->prevState) return;
 
     if (this->currentState == PRESSED) {
         // New press event occured, record when button went down
